@@ -72,6 +72,7 @@ def imshow(inp, title=None):
 # :doc:`transfer_learning_tutorial`.
 
 data_transform = transforms.Compose([
+
           transforms.RandomSizedCrop(224),
           transforms.RandomHorizontalFlip(),
           transforms.ToTensor(),
@@ -79,14 +80,17 @@ data_transform = transforms.Compose([
                                std=[0.229, 0.224, 0.225])
       ])
 
-torchvision_transformed_dataset = datasets.ImageFolder(root="image_test/train/",transform=data_transform)
+
+data_dir = "image_test"
+
+torchvision_transformed_dataset = datasets.ImageFolder(root=os.path.join(data_dir, "train"),transform=data_transform)
 
 data_loader = torch.utils.data.DataLoader(torchvision_transformed_dataset, batch_size=4, shuffle=True, num_workers=4)
 
 fig= plt.figure()
 
 
-
+print(torchvision_transformed_dataset.classes) # ['lower_body', 'upper_body']
 for i_batch, sample_batched in enumerate(data_loader):
     if i_batch ==2:
         break
