@@ -139,7 +139,7 @@ class RandomCrop(object):
 
         h, w = image.shape[:2]
         new_h, new_w = self.output_size
-        top = np.random.randit(0, h - new_h)
+        top = np.random.randint(0, h - new_h)
         left = np.random.randint(0, w - new_w)
 
         image = image[top:top+new_h, left:left+new_w]
@@ -157,7 +157,7 @@ class ToTensor():
         # numpy image : H x W x C
         # torch image : C x H x W
         image = image.transpose((2, 0, 1))
-        return image
+        return torch.from_numpy(image)
 
 
 
