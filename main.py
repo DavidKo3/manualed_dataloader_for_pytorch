@@ -64,7 +64,6 @@ print(len(data_img))
 
 
 
-
 transformed_dataset = loader.CommonDataset(root_dir="image_test", sub_dir="train/lower_body/",
                                            file_type="jpg",
                                            transform=transforms.Compose([loader.Rescale(256),

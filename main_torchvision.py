@@ -80,7 +80,6 @@ data_transform = transforms.Compose([
                                std=[0.229, 0.224, 0.225])
       ])
 
-
 data_dir = "image_test"
 
 torchvision_transformed_dataset = datasets.ImageFolder(root=os.path.join(data_dir, "train"),transform=data_transform)
